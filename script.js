@@ -1,14 +1,14 @@
 // Dot colors
-colors = ['red', 'yellow', 'green', "blue", ];
+colors = ['red', 'yellow', 'green', 'blue', ];
 
 // Number of dots in a code
 length = 3;
 
 // Parts of the web page
-responseDiv = document.getElementById("response");
-guessDiv = document.getElementById("guess");
-dotsDiv = document.getElementById("dots");
-menuDiv = document.getElementById("menu");
+responseDiv = document.getElementById('response');
+guessDiv = document.getElementById('guess');
+dotsDiv = document.getElementById('dots');
+menuDiv = document.getElementById('menu');
 
 // An array of random colors is created as the 'secret' code
 secret = [];
@@ -20,8 +20,8 @@ while (secret.length < length) {
 }
 
 // Makes a dot
-function makeDot(color=colors[0], htmlClass="dot") {
-	let dot = document.createElement("span");
+function makeDot(color=colors[0], htmlClass='dot') {
+	let dot = document.createElement('span');
     dot.style.backgroundColor = color;
 	dot.className = htmlClass;
 	return dot;
@@ -42,10 +42,10 @@ function clear() {
 }
 
 // Add a clear button to the page
-let clear_button = document.createElement("button");
-clear_button.onclick = clear;
-clear_button.appendChild(document.createTextNode("Clear"));
-menu.appendChild(clear_button);
+let clearButton = document.createElement('button');
+clearButton.onclick = clear;
+clearButton.appendChild(document.createTextNode('Clear'));
+menu.appendChild(clearButton);
 
 // Changes the color of the given dot
 function addColor(color) {
@@ -64,9 +64,9 @@ function respond() {
 	let response = "";
 	for (let i=0; i<guessDiv.children.length; i++) {
 	    if (guessDiv.children[i].style.backgroundColor == secret[i]) {
-	        response += "right ";
-	    } else if (guessDiv.children[i].className == "dot") {
-	        response += "wrong ";
+	        response += 'right ';
+	    } else if (guessDiv.children[i].className == 'dot') {
+	        response += 'wrong ';
 	    }
 	}
 	responseDiv.innerText = response;

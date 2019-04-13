@@ -20,7 +20,7 @@ while (secret.length < length) {
 }
 
 // Makes a dot
-function makeDot(color=colors[0], htmlClass='dot') {
+function makeDot(color = colors[0], htmlClass = 'dot') {
 	let dot = document.createElement('span');
 	dot.style.backgroundColor = color;
 	dot.className = htmlClass;
@@ -28,13 +28,13 @@ function makeDot(color=colors[0], htmlClass='dot') {
 }
 
 // Make the dots that change color
-for (let i=0; i<length; i++) {
+for (let i = 0; i < length; i++) {
 	guessDiv.appendChild(makeDot('white', 'empty'));
 }
 
 // Clears the current guess
 function clear() {
-	for (let i=0; i<guessDiv.children.length; i++) {
+	for (let i = 0; i < guessDiv.children.length; i++) {
 		guessDiv.children[i].style.backgroundColor = 'white';
 		guessDiv.children[i].className = 'empty';
 	}
@@ -45,17 +45,17 @@ function clear() {
 let clearButton = document.createElement('button');
 clearButton.onclick = clear;
 clearButton.appendChild(document.createTextNode('Clear'));
-menu.appendChild(clearButton);
+menuDiv.appendChild(clearButton);
 
 // Changes the color of the given dot
 function addColor(color) {
 	// The first 'empty' dot is colored
-	for (let i=0; i<guessDiv.children.length; i++) {
+	for (let i = 0; i < guessDiv.children.length; i++) {
 		// If there are no 'empty' dots, then nothing happens
 		if (guessDiv.children[i].className == 'empty') {
 	 		guessDiv.children[i].style.backgroundColor = color;
 	        	guessDiv.children[i].className = 'dot';
-	        	break; // No 'empty' dot? Then nothing happens in this loop
+	        	break; // We break out of the loop because we found the empty dot, so we don't need to keep looking
 	    	}
 	}
 }
@@ -63,7 +63,7 @@ function addColor(color) {
 // Gives a response to a guess
 function respond() {
 	let response = "";
-	for (let i=0; i<guessDiv.children.length; i++) {
+	for (let i = 0; i < guessDiv.children.length; i++) {
 	    if (guessDiv.children[i].style.backgroundColor == secret[i]) {
 	        response += 'right ';
 	    } else if (guessDiv.children[i].className == 'dot') {
@@ -74,7 +74,7 @@ function respond() {
 }
 
 // Add a clickable dot for each color
-for (let i=0; i < colors.length; i++) {
+for (let i = 0; i < colors.length; i++) {
 	let dot = makeDot(colors[i]);
 	dot.onclick = function () {
 	    addColor(colors[i]);
